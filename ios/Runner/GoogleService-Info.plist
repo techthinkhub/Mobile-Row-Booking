@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>148296100294-7eo951k5sd2k06lhnvjlaf7f5bq162gv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.148296100294-7eo951k5sd2k06lhnvjlaf7f5bq162gv</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>148296100294-54pfado95r3n28ot0j0auiqjovcsion0.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCBzH-qu-D8DW3pKKqwdhgbMHH6PURi4KM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>148296100294</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.vale.customer.co.id</string>
+	<key>PROJECT_ID</key>
+	<string>bengkelly-mobile-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bengkelly-mobile-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:148296100294:ios:eb2ef623f92d6fb4fa2ac7</string>
+	<key>DATABASE_URL</key>
+	<string>https://bengkelly-mobile-app-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>

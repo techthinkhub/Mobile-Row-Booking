@@ -1,0 +1,311 @@
+{
+  "project_info": {
+    "project_number": "148296100294",
+    "firebase_url": "https://bengkelly-mobile-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bengkelly-mobile-app",
+    "storage_bucket": "bengkelly-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148296100294:android:a62a938505759f24fa2ac7",
+        "android_client_info": {
+          "package_name": "com.autobenz.customer.co.id1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148296100294-nve17k1te6ibbnmdtv3s2leqdbb7dbfj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.autobenz.customer.co.id1",
+            "certificate_hash": "fd1b6684eb0228b3c4f11489a5ec4a8c532e562f"
+          }
+        },
+        {
+          "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkp-s9wI8d9ZsGTecwMCzjoIg0x7VA378"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "148296100294-7eo951k5sd2k06lhnvjlaf7f5bq162gv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.autobenz.customer.co.id1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148296100294:android:60f820b283e565c9fa2ac7",
+        "android_client_info": {
+          "package_name": "com.autobenz.customer.co.id1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkp-s9wI8d9ZsGTecwMCzjoIg0x7VA378"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "148296100294-7eo951k5sd2k06lhnvjlaf7f5bq162gv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.autobenz.customer.co.id1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148296100294:android:c2aa93740df3d2a3fa2ac7",
+        "android_client_info": {
+          "package_name": "com.autobenz.customer.co.id1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148296100294-c4ph9kq5suu6tfq0a9k38f8l78ve14cs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.autobenz.customer.co.id1",
+            "certificate_hash": "516e609446e1ed62fd0353de54fffff6f34469aa"
+          }
+        },
+        {
+          "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkp-s9wI8d9ZsGTecwMCzjoIg0x7VA378"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "148296100294-7eo951k5sd2k06lhnvjlaf7f5bq162gv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.autobenz.customer.co.id1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148296100294:android:4c74f85ca693e4f1fa2ac7",
+        "android_client_info": {
+          "package_name": "com.autobenz.customer.co.id1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148296100294-5reaps908m408i3gu05ebfrt6npceuq2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.autobenz.customer.co.id1",
+            "certificate_hash": "fd1b6684eb0228b3c4f11489a5ec4a8c532e562f"
+          }
+        },
+        {
+          "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkp-s9wI8d9ZsGTecwMCzjoIg0x7VA378"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "148296100294-7eo951k5sd2k06lhnvjlaf7f5bq162gv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.autobenz.customer.co.id1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148296100294:android:28b4da39809805c5fa2ac7",
+        "android_client_info": {
+          "package_name": "com.autobenz.customer.co.id1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148296100294-852aivlh7nj4k0r9e3fgv7vv54qvnc1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.autobenz.customer.co.id1",
+            "certificate_hash": "0a2ad2acb4c4ec67034853dd9a92b43b5d4b1fe8"
+          }
+        },
+        {
+          "client_id": "148296100294-mmjqkfc8flrnkan6ljhs7dkbccgd5eib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.autobenz.customer.co.id1",
+            "certificate_hash": "fd1b6684eb0228b3c4f11489a5ec4a8c532e562f"
+          }
+        },
+        {
+          "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkp-s9wI8d9ZsGTecwMCzjoIg0x7VA378"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "148296100294-7eo951k5sd2k06lhnvjlaf7f5bq162gv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.autobenz.customer.co.id1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148296100294:android:2967e60adabaf081fa2ac7",
+        "android_client_info": {
+          "package_name": "com.autobenz.customer.co.id1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148296100294-54pfado95r3n28ot0j0auiqjovcsion0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.autobenz.customer.co.id1",
+            "certificate_hash": "fd1b6684eb0228b3c4f11489a5ec4a8c532e562f"
+          }
+        },
+        {
+          "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkp-s9wI8d9ZsGTecwMCzjoIg0x7VA378"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "148296100294-7eo951k5sd2k06lhnvjlaf7f5bq162gv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.autobenz.customer.co.id1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148296100294:android:a0ef17b1d5529016fa2ac7",
+        "android_client_info": {
+          "package_name": "com.autobenz.customer.co.id1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkp-s9wI8d9ZsGTecwMCzjoIg0x7VA378"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148296100294-7hoqqgt09q8cfnjs3d0quv5v49k5vib5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "148296100294-7eo951k5sd2k06lhnvjlaf7f5bq162gv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.autobenz.customer.co.id1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
