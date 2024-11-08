@@ -1,17 +1,20 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:ui';import 'package:customer_bengkelly/app/data/data_endpoint/bookingcustomer.dart';
+
+import 'package:customer_bengkelly/app/data/data_endpoint/bookingcustomer.dart';
 import 'package:customer_bengkelly/app/data/data_endpoint/createkendaraan.dart';
 import 'package:customer_bengkelly/app/data/data_endpoint/lupapassword.dart';
 import 'package:customer_bengkelly/app/data/data_endpoint/otp.dart';
 import 'package:customer_bengkelly/app/data/publik.dart';
+import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../routes/app_pages.dart';
-import 'package:dio/dio.dart' as dio;
 import 'data_endpoint/bookingemergency.dart';
 import 'data_endpoint/customkendaraan.dart';
 import 'data_endpoint/detailplannningservice.dart';
@@ -26,25 +29,22 @@ import 'data_endpoint/kendaraanpic.dart';
 import 'data_endpoint/konfirmplanning.dart';
 import 'data_endpoint/listpmpt.dart';
 import 'data_endpoint/lokasi.dart';
-import 'package:get/get_connect/http/src/multipart/form_data.dart' as getConnectFormData;
 import 'data_endpoint/lokasilistrik.dart';
 import 'data_endpoint/merekkendaraan.dart';
 import 'data_endpoint/news.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'data_endpoint/plannningservice.dart';
 import 'data_endpoint/profielpic.dart';
 import 'data_endpoint/profile.dart';
 import 'data_endpoint/profileDepartemen.dart';
 import 'data_endpoint/register.dart';
 import 'data_endpoint/tipekendaraan.dart';
-import 'package:get/get_connect/http/src/multipart/form_data.dart';
 import 'localstorage.dart';
 
 class API {
   //News ----------------------------------------------------------------------------------
   static const _bengkellyUrl = 'https://bengkelly.co.id/wp-json/wp/v2/posts';
-  static const _fleetMaintenanceUrl = 'https://fleetmaintenance.co.id/wp-json/wp/v2/posts';
-  static const _katagorikendaraan = 'https://api-vale.techthinkhub.com/api/kategori-kendaraan';
+  static const _fleetMaintenanceUrl =
+      'https://fleetmaintenance.co.id/wp-json/wp/v2/posts';
   //API ------------------------------------------------------------------------------------
   // static const _url = 'https://mobile.techthinkhub.id';
   static const _urlbe = 'https://api.realauto.co.id';
@@ -62,6 +62,7 @@ class API {
   static const _GetEmergencyService2 = '$_baseUrl/emergency-service';
   static const _GetMerek = '$_baseUrl/merk';
   static const _GetTipe = '$_baseUrl/tipe';
+  static const _katagorikendaraan = '$_baseUrl/kategori-kendaraan';
   static const _GetCustomKendaraan = '$_baseUrl/customer-kendaraan';
   static const _GetJenisService = '$_baseUrl/get-jenis-service';
   static const _PostLupaPassword = '$_baseUrl/customer/kirim-otp';
@@ -74,8 +75,10 @@ class API {
   static const _PostDetailPalanning = '$_baseUrl/planning-detail';
   static const _PostPlanningConfirm = '$_baseUrl/planning-confirm';
 
-
-  static Future<String?> login({required String email, required String password, required String fcmtoken}) async {
+  static Future<String?> login(
+      {required String email,
+      required String password,
+      required String fcmtoken}) async {
     final data = {
       "email": email,
       "password": password,
@@ -105,9 +108,7 @@ class API {
             String token = responseData['token'];
             LocalStorages.setToken(token);
             Get.snackbar('Selamat Datang', 'Pelanggan Real Auto Benz',
-                backgroundColor:Colors.green,
-                colorText: Colors.white
-            );
+                backgroundColor: Colors.green, colorText: Colors.white);
             Get.offAllNamed(Routes.HOME);
             return token;
           }
@@ -117,13 +118,15 @@ class API {
         }
       } else {
         print('Failed to load data, status code: ${response.statusCode}');
-        throw Exception('Failed to load data, status code: ${response.statusCode}');
+        throw Exception(
+            'Failed to load data, status code: ${response.statusCode}');
       }
     } catch (e) {
       print('Error during login: $e');
       throw e;
     }
   }
+
   //Beda
   static Future<DetailPlanningService> DetailPallaningID({
     required String kodeplanning,
@@ -159,6 +162,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<Jamistimasi> jamestimasiID({
     required String nopolisi,
@@ -196,6 +200,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<Register> RegisterID({
     required String nama,
@@ -285,6 +290,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<BookingEmergency> EmergencyServiceValeID({
     required String idcabang,
@@ -303,7 +309,8 @@ class API {
       if (mediaPaths != null) {
         for (String path in mediaPaths) {
           if (await File(path).exists()) {
-            mediaFiles.add(await dio.MultipartFile.fromFile(path, filename: path.split('/').last));
+            mediaFiles.add(await dio.MultipartFile.fromFile(path,
+                filename: path.split('/').last));
           } else {
             print('File does not exist: $path');
           }
@@ -355,13 +362,15 @@ class API {
 
         return obj;
       } else {
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       print('Error: $e');
       throw Exception('Error during registration: $e');
     }
   }
+
   //bEDA
   static Future<KonfirmPlanningService> ConfirmPlanningID({
     required String kodeplanning,
@@ -410,7 +419,8 @@ class API {
 
         return obj;
       } else {
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       print('Error: $e');
@@ -481,7 +491,8 @@ class API {
 
         return obj;
       } else {
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       print('Error: $e');
@@ -551,7 +562,8 @@ class API {
 
         return obj;
       } else {
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       print('Error: $e');
@@ -608,8 +620,7 @@ class API {
             backgroundColor: Colors.yellow,
             colorText: Colors.black,
           );
-        } else {
-        }
+        } else {}
         return obj;
       } else {
         Get.snackbar(
@@ -681,8 +692,8 @@ class API {
         }
         return obj;
       } else {
-
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       print('Error: $e');
@@ -694,6 +705,7 @@ class API {
       );
     }
   }
+
   //Beda
   static Future<OTP> UbahPasswordID({
     required String currentpassword,
@@ -748,13 +760,15 @@ class API {
         }
         return obj;
       } else {
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       print('Error: $e');
       throw Exception('Error during registration: $e');
     }
   }
+
   //Beda
   static Future<OTP> OTPID({
     required String otp,
@@ -804,13 +818,15 @@ class API {
         }
         return obj;
       } else {
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       print('Error: $e');
       throw Exception('Error during registration: $e');
     }
   }
+
   //Beda
   static Future<OTP> ResetPasswordID({
     required String email,
@@ -863,13 +879,15 @@ class API {
         }
         return obj;
       } else {
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       print('Error: $e');
       throw Exception('Error during registration: $e');
     }
   }
+
   //Beda
   static Future<BookingEmergency> EmergencyServiceID({
     required String idcabang,
@@ -924,8 +942,8 @@ class API {
         }
         return obj;
       } else {
-
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       print('Error: $e');
@@ -933,6 +951,7 @@ class API {
       throw Exception('Error during registration: $e');
     }
   }
+
 //Beda
 // Beda
 //Beda
@@ -1006,7 +1025,8 @@ class API {
           backgroundColor: Colors.redAccent,
           colorText: Colors.white,
         );
-        throw Exception('Failed to register booking: ${response.statusMessage}');
+        throw Exception(
+            'Failed to register booking: ${response.statusMessage}');
       }
     } catch (e) {
       Get.snackbar(
@@ -1019,6 +1039,7 @@ class API {
       throw Exception();
     }
   }
+
 //Beda
   static Future<MerekKendaraan> merekid() async {
     try {
@@ -1035,7 +1056,9 @@ class API {
       );
 
       if (response.statusCode == 404) {
-        return MerekKendaraan(status: false, message: "Tidak ada data booking untuk karyawan ini.");
+        return MerekKendaraan(
+            status: false,
+            message: "Tidak ada data booking untuk karyawan ini.");
       }
 
       final obj = MerekKendaraan.fromJson(response.data);
@@ -1053,6 +1076,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<KategoryKendaraan> kategorykendaraanID() async {
     try {
@@ -1069,7 +1093,9 @@ class API {
       );
 
       if (response.statusCode == 404) {
-        return KategoryKendaraan(status: false, message: "Tidak ada data booking untuk karyawan ini.");
+        return KategoryKendaraan(
+            status: false,
+            message: "Tidak ada data booking untuk karyawan ini.");
       }
 
       final obj = KategoryKendaraan.fromJson(response.data);
@@ -1087,6 +1113,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<TipeKendaraan> tipekendaraanID({required int id}) async {
     try {
@@ -1100,7 +1127,9 @@ class API {
       );
 
       if (response.statusCode == 404) {
-        return TipeKendaraan(status: false, message: "Tidak ada data booking untuk karyawan ini.");
+        return TipeKendaraan(
+            status: false,
+            message: "Tidak ada data booking untuk karyawan ini.");
       }
 
       final obj = TipeKendaraan.fromJson(response.data);
@@ -1118,6 +1147,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<CustomerDepartemen> PilihKendaraanDepartemen() async {
     try {
@@ -1134,7 +1164,9 @@ class API {
       );
 
       if (response.statusCode == 404) {
-        return CustomerDepartemen(status: false, message: "Tidak ada data booking untuk karyawan ini.");
+        return CustomerDepartemen(
+            status: false,
+            message: "Tidak ada data booking untuk karyawan ini.");
       }
 
       final obj = CustomerDepartemen.fromJson(response.data);
@@ -1170,7 +1202,9 @@ class API {
       );
 
       if (response.statusCode == 404) {
-        return KendaraanPIC(status: false, message: "Tidak ada data booking untuk karyawan ini.");
+        return KendaraanPIC(
+            status: false,
+            message: "Tidak ada data booking untuk karyawan ini.");
       }
 
       final obj = KendaraanPIC.fromJson(response.data);
@@ -1188,6 +1222,7 @@ class API {
       throw e;
     }
   }
+
 //Beda
   //Beda
   static Future<CustomerKendaraan> PilihKendaraan() async {
@@ -1205,7 +1240,9 @@ class API {
       );
 
       if (response.statusCode == 404) {
-        return CustomerKendaraan(status: false, message: "Tidak ada data booking untuk karyawan ini.");
+        return CustomerKendaraan(
+            status: false,
+            message: "Tidak ada data booking untuk karyawan ini.");
       }
 
       final obj = CustomerKendaraan.fromJson(response.data);
@@ -1223,6 +1260,7 @@ class API {
       throw e;
     }
   }
+
 //Beda
   static Future<Profile> profileiD() async {
     final token = Publics.controller.getToken.value ?? '';
@@ -1239,7 +1277,9 @@ class API {
       );
 
       if (response.statusCode == 404) {
-        return Profile(status: false, message: "Tidak ada data booking untuk karyawan ini.");
+        return Profile(
+            status: false,
+            message: "Tidak ada data booking untuk karyawan ini.");
       }
 
       final obj = Profile.fromJson(response.data);
@@ -1256,6 +1296,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<ProfileDepartemen> profileiDDepartemen() async {
     final token = Publics.controller.getToken.value ?? '';
@@ -1272,7 +1313,9 @@ class API {
       );
 
       if (response.statusCode == 404) {
-        return ProfileDepartemen(status: false, message: "Tidak ada data booking untuk karyawan ini.");
+        return ProfileDepartemen(
+            status: false,
+            message: "Tidak ada data booking untuk karyawan ini.");
       }
 
       final obj = ProfileDepartemen.fromJson(response.data);
@@ -1289,6 +1332,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<ProfilePIC> profileiDPIC() async {
     final token = Publics.controller.getToken.value ?? '';
@@ -1305,7 +1349,9 @@ class API {
       );
 
       if (response.statusCode == 404) {
-        return ProfilePIC(status: false, message: "Tidak ada data booking untuk karyawan ini.");
+        return ProfilePIC(
+            status: false,
+            message: "Tidak ada data booking untuk karyawan ini.");
       }
 
       final obj = ProfilePIC.fromJson(response.data);
@@ -1322,6 +1368,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<PlanningService> PlanningServiceID() async {
     try {
@@ -1389,6 +1436,7 @@ class API {
       throw e;
     }
   } //Beda
+
   static Future<HistoryPIC> HistoryBookingPICID() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1421,6 +1469,7 @@ class API {
       throw e;
     }
   }
+
   static Future<Lokasi> LokasiBengkellyID() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1453,6 +1502,7 @@ class API {
       throw e;
     }
   } //Beda
+
   static Future<LokasiListrik> LokasiListrikID() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1485,6 +1535,7 @@ class API {
       throw e;
     }
   } //Beda
+
   static Future<JenisServiceResponse> JenisServiceID() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1517,6 +1568,7 @@ class API {
       throw e;
     }
   } //Beda
+
   static Future<PmOpt> listpmoptID() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1549,6 +1601,7 @@ class API {
       throw e;
     }
   } //Beda
+
   static Future<GeneralCheckup> GCMekanikID({
     required String kategoriKendaraanId,
   }) async {
@@ -1583,6 +1636,7 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<void> showBookingNotificationsDitolak() async {
     try {
@@ -1611,11 +1665,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'Ditolak') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -1624,7 +1678,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             10,
             'Booking ${booking.namaStatus ?? ''}',
@@ -1638,6 +1692,7 @@ class API {
       throw e;
     }
   }
+
   static Future<void> showBookingNotificationsLunas() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1665,11 +1720,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'Lunas') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -1678,7 +1733,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             9,
             'Booking ${booking.namaStatus ?? ''}',
@@ -1692,6 +1747,7 @@ class API {
       throw e;
     }
   }
+
   static Future<void> showBookingNotificationsInvoice() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1719,11 +1775,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'Invoice') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -1732,7 +1788,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             8,
             'Booking ${booking.namaStatus ?? ''}',
@@ -1746,6 +1802,7 @@ class API {
       throw e;
     }
   }
+
   static Future<void> showBookingNotificationsSelesaiDikerjakan() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1773,11 +1830,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'Selesai Dikerjakan') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -1786,7 +1843,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             7,
             'Booking ${booking.namaStatus ?? ''}',
@@ -1800,6 +1857,7 @@ class API {
       throw e;
     }
   }
+
   static Future<void> showBookingNotificationsPKBTUTUP() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1827,11 +1885,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'PKB TUTUP') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -1840,7 +1898,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             6,
             'Booking ${booking.namaStatus ?? ''}',
@@ -1854,6 +1912,7 @@ class API {
       throw e;
     }
   }
+
   static Future<void> showBookingNotificationsPKB() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1881,11 +1940,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'PKB') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -1894,7 +1953,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             5,
             'Booking ${booking.namaStatus ?? ''}',
@@ -1908,6 +1967,7 @@ class API {
       throw e;
     }
   }
+
   static Future<void> showBookingNotificationsEstimasi() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1935,11 +1995,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'Estimasi') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -1948,7 +2008,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             4,
             'Booking ${booking.namaStatus ?? ''}',
@@ -1962,6 +2022,7 @@ class API {
       throw e;
     }
   }
+
   static Future<void> showBookingNotificationsDiproses() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -1989,11 +2050,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'Diproses') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -2002,7 +2063,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             3,
             'Booking ${booking.namaStatus ?? ''}',
@@ -2016,6 +2077,7 @@ class API {
       throw e;
     }
   }
+
   static Future<void> showBookingNotificationsBooking() async {
     try {
       final token = Publics.controller.getToken.value ?? '';
@@ -2043,11 +2105,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'Booking') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -2056,7 +2118,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             2,
             'Booking ${booking.namaStatus ?? ''}',
@@ -2099,11 +2161,11 @@ class API {
       }
       final bookings = obj.historyPelanggan ?? [];
       final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+          FlutterLocalNotificationsPlugin();
       for (final booking in bookings) {
         if (booking.namaStatus == 'Approve') {
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
-          AndroidNotificationDetails(
+              AndroidNotificationDetails(
             'your channel id',
             'your channel name',
             importance: Importance.max,
@@ -2112,7 +2174,7 @@ class API {
             sound: RawResourceAndroidNotificationSound('sounds'),
           );
           const NotificationDetails platformChannelSpecifics =
-          NotificationDetails(android: androidPlatformChannelSpecifics);
+              NotificationDetails(android: androidPlatformChannelSpecifics);
           await flutterLocalNotificationsPlugin.show(
             1,
             'Booking ${booking.namaStatus ?? ''}',
@@ -2126,13 +2188,15 @@ class API {
       throw e;
     }
   }
+
   //Beda
   static Future<List<Post>> fetchPostsFromSource({
     required String url,
     int perPage = 10,
     int page = 1,
   }) async {
-    final response = await http.get(Uri.parse('$url?_embed&per_page=$perPage&page=$page'));
+    final response =
+        await http.get(Uri.parse('$url?_embed&per_page=$perPage&page=$page'));
 
     if (response.statusCode == 200) {
       List<dynamic> postsJson = json.decode(response.body);
@@ -2142,7 +2206,8 @@ class API {
     }
   }
 
-  static Future<List<Post>> fetchBengkellyPosts({int perPage = 10, int page = 1}) async {
+  static Future<List<Post>> fetchBengkellyPosts(
+      {int perPage = 10, int page = 1}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? savedData = prefs.getString('bengkelly_posts');
 
@@ -2150,12 +2215,14 @@ class API {
       List<dynamic> postsJson = json.decode(savedData);
       return postsJson.map((json) => Post.fromJson(json)).toList();
     } else {
-      List<Post> posts = await fetchPostsFromSource(url: _bengkellyUrl, perPage: perPage, page: page);
+      List<Post> posts = await fetchPostsFromSource(
+          url: _bengkellyUrl, perPage: perPage, page: page);
       return posts;
     }
   }
 
-  static Future<List<Post>> fetchFleetMaintenancePosts({int perPage = 10, int page = 1}) async {
+  static Future<List<Post>> fetchFleetMaintenancePosts(
+      {int perPage = 10, int page = 1}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? savedData = prefs.getString('fleet_maintenance_posts');
 
@@ -2163,7 +2230,8 @@ class API {
       List<dynamic> postsJson = json.decode(savedData);
       return postsJson.map((json) => Post.fromJson(json)).toList();
     } else {
-      List<Post> posts = await fetchPostsFromSource(url: _fleetMaintenanceUrl, perPage: perPage, page: page);
+      List<Post> posts = await fetchPostsFromSource(
+          url: _fleetMaintenanceUrl, perPage: perPage, page: page);
       return posts;
     }
   }

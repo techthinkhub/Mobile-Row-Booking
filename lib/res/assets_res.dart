@@ -7,9 +7,10 @@ class AssetsRes {
   AssetsRes._();
 
   static const String PLUGIN_NAME = 'customer_bengkelly';
-  static const String PLUGIN_VERSION = '1.2.5+1';
+  static const String PLUGIN_VERSION = '1.2.6+1';
   static const String BUKU_PANDUAN = 'assets/buku_panduan.pdf';
-  static const String BUKU_PANDUAN_EMERGENCY = 'assets/buku_panduan_emergency.pdf';
+  static const String BUKU_PANDUAN_EMERGENCY =
+      'assets/buku_panduan_emergency.pdf';
   static const String DROP = 'assets/icons/drop.png';
   static const String LOGO_NENZ = 'assets/icons/logo_nenz.png';
   static const String MERCI = 'assets/icons/merci.svg';
@@ -17,7 +18,7 @@ class AssetsRes {
   static const String WHATSAPP2 = 'assets/icons/whatsapp2.svg';
   static const String YOUTUBE = 'assets/icons/youtube.svg';
   static const String BG = 'assets/images/bg.jpeg';
-  static const String BG1 = 'assets/images/bg.png';
+  static const String BG22 = 'assets/images/bg.png';
   static const String BG2 = 'assets/images/bg2.png';
   static const String BGHISTORY = 'assets/images/bghistory.png';
   static const String BGNOVABAR = 'assets/images/bgnovabar.png';
@@ -53,13 +54,13 @@ class AssetsRes {
   static const String ACC6 = 'assets/produk/acc6.png';
   static const String ACC7 = 'assets/produk/acc7.png';
   static const String OLI1 = 'assets/produk/oli1.jpg';
-  static const String OLI11 = 'assets/produk/oli1.png';
+  static const String OLI12 = 'assets/produk/oli1.png';
   static const String OLI2 = 'assets/produk/oli2.jpg';
-  static const String OLI21 = 'assets/produk/oli2.png';
+  static const String OLI22 = 'assets/produk/oli2.png';
   static const String OLI3 = 'assets/produk/oli3.png';
   static const String OLI4 = 'assets/produk/oli4.png';
   static const String OLI5 = 'assets/produk/oli5.png';
   static const String OLI6 = 'assets/produk/oli6.jpg';
-  static const String OLI61 = 'assets/produk/oli6.png';
+  static const String OLI62 = 'assets/produk/oli6.png';
   static const String SAMPLE_VIDEO = 'assets/video/sample_video.mp4';
 }
